@@ -3,13 +3,13 @@ CFLAGS = -Wall -Wextra -Werror -g -pedantic -std=c++11
 SRCS = $(wildcard *.cpp) 
 OBJS = $(patsubst %.cpp,obj/%.o,$(SRCS))
 
-TARGET = FragTrap
+TARGET = DiamondTrap
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
-	@echo "$(GREEN)Compiled FragTrap!$(DEFAULT)"
+	@echo "$(GREEN)Compiled DiamondTrap!$(DEFAULT)"
 
 obj/%.o: %.cpp | obj
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -23,7 +23,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(TARGET)
-	@echo "$(RED)Removed FragTrap!$(DEFAULT)"
+	@echo "$(RED)Removed DiamondTrap!$(DEFAULT)"
 
 re: fclean all
 
