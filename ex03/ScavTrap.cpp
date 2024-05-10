@@ -6,18 +6,26 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/25 13:26:42 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/04/26 15:06:11 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/10 17:36:37 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap(void) : ClapTrap("")
+{
+	std::cout << "Default ScavTrap constructor called!" << std::endl;
+	_hitPoints = stHitPoints;
+	_energyPoints = stEnergyPoints;
+	_attackDamage = stAttackDamage;
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Default ScavTrap constructor called!" << std::endl;
-	_hitPoints = 100;
-	_energyPoints = 50;
-	_attackDamage = 20;
+	_hitPoints = stHitPoints;
+	_energyPoints = stEnergyPoints;
+	_attackDamage = stAttackDamage;
 }
 
 void ScavTrap::attack(const std::string &target)
@@ -35,27 +43,30 @@ void ScavTrap::attack(const std::string &target)
 
 void ScavTrap::guardGate(void)
 {
-    std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode!" << std::endl; 
+	if (this->_hitPoints <= 0)
+		std::cout << this->_name << " can't activate Gate keeper mode, it looks like he's died!" << std::endl;
+	else
+		std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
-	this->_name = copy._name;
-	this->_energyPoints = copy._energyPoints;
-	this->_attackDamage = copy._attackDamage;
-	this->_hitPoints = copy._hitPoints;
+	this->_name = other._name;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	this->_hitPoints = other._hitPoints;
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &t)
+ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
 	std::cout << "ScavTrap copy assignment operator called!" << std::endl;
-	if (this != &t)
+	if (this != &other)
 	{
-		this->_name = t._name;
-		this->_attackDamage = t._attackDamage;
-		this->_energyPoints = t._energyPoints;
-		this->_hitPoints = t._hitPoints;
+		this->_name = other._name;
+		this->_attackDamage = other._attackDamage;
+		this->_energyPoints = other._energyPoints;
+		this->_hitPoints = other._hitPoints;
 	}
 	return (*this);
 }

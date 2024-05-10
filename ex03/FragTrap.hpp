@@ -6,7 +6,7 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/26 15:14:50 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/02 15:40:04 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/10 17:46:58 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 #include "ScavTrap.hpp"
 
-class FragTrap : virtual public ClapTrap
+class FragTrap : public ClapTrap
 {
+  protected:
+	static const int ftEnergyPoints = 100;
+	static const int ftAttackDamage = 30;
+
   public:
-	FragTrap(void);
 	FragTrap(std::string name);
-	FragTrap(const FragTrap &copy);
-	FragTrap &operator=(const FragTrap &t);
+	FragTrap(const FragTrap &other);
+	FragTrap &operator=(const FragTrap &other);
 	~FragTrap();
 
 	void highFivesGuys(void);

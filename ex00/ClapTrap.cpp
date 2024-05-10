@@ -6,40 +6,38 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 15:33:58 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/04/26 14:22:20 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/10 17:42:24 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name(""),_hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap(void) : _name(""), _hitPoints(ctHitPoints),
+	_energyPoints(ctEnergyPoints), _attackDamage(ctAttackDamage)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name),_hitPoints(10), _energyPoints(10),
-	_attackDamage(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(ctHitPoints),
+	_energyPoints(ctEnergyPoints), _attackDamage(ctAttackDamage)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
-ClapTrap::ClapTrap(const ClapTrap &copy)
+ClapTrap::ClapTrap(const ClapTrap &other)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_name = copy._name;
-	this->_hitPoints = copy._hitPoints;
-	this->_energyPoints = copy._energyPoints;
-	this->_attackDamage = copy._attackDamage;
+	*this = other;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &copy)
+	if (this != &other)
 	{
-		this->_name = copy._name;
-		this->_hitPoints = copy._hitPoints;
-		this->_energyPoints = copy._energyPoints;
-		this->_attackDamage = copy._attackDamage;
+		this->_name = other._name;
+		this->_hitPoints = other._hitPoints;
+		this->_energyPoints = other._energyPoints;
+		this->_attackDamage = other._attackDamage;
 	}
 	return (*this);
 }

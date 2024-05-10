@@ -6,7 +6,7 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 15:34:01 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/04/26 14:41:22 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/10 17:42:38 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@
 class ClapTrap
 {
   protected:
+	static const int ctHitPoints = 10;
+	static const int ctEnergyPoints = 10;
+	static const int ctAttackDamage = 0;
 	std::string _name;
 	int _hitPoints;
 	int _energyPoints;
 	int _attackDamage;
 
   public:
+	ClapTrap(void);
 	ClapTrap(std::string name);
-	ClapTrap(std::string name, int hitPoints, int energyPoints,
-		int attackDamage);
-	ClapTrap(const ClapTrap &copy);
-	ClapTrap &operator=(const ClapTrap &t);
+	ClapTrap(const ClapTrap &other);
+	ClapTrap &operator=(const ClapTrap &other);
 	~ClapTrap();
 
 	void attack(const std::string &target);
