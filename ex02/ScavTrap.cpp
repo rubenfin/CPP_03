@@ -6,7 +6,7 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/25 13:26:42 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 17:36:37 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:41:56 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(void) : ClapTrap("")
 	_attackDamage = stAttackDamage;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
 	std::cout << "Default ScavTrap constructor called!" << std::endl;
 	_hitPoints = stHitPoints;
@@ -36,7 +36,7 @@ void ScavTrap::attack(const std::string &target)
 		this->_energyPoints--;
 	}
 	else if (this->_hitPoints <= 0)
-		std::cout << this->_name << " has died!" << std::endl;
+		std::cout << this->_name << " has no hitpoints left!" << std::endl;
 	else
 		std::cout << this->_name << " has ran out of energy!" << std::endl;
 }

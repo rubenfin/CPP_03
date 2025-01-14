@@ -6,19 +6,18 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 15:34:02 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/02 15:36:25 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 12:05:25 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-int main(void)
+int	main(void)
 {
-    DiamondTrap jj("jj");
+	DiamondTrap jj("jj");
 
-    jj.highFivesGuys();
-    jj.beRepaired(105);
-    jj.attack("Target");
-    jj.takeDamage(650);
-    return (0);
+	jj.beRepaired(523);
+	jj.attack("Target");
+	jj.whoAmI();
+	return (0);
 }

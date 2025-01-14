@@ -6,7 +6,7 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 15:34:02 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 16:47:56 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:47:26 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int main(void)
     jj.attack("Target");
     jj.attack("Target");
     jj.takeDamage(650);
+    jj.highFivesGuys();
+
     return (0);
 }

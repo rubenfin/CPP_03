@@ -6,16 +6,24 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/26 15:14:47 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 17:40:44 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:42:44 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(void) : ClapTrap("")
 {
 	std::cout << "Default FragTrap constructor called!" << std::endl;
-	this->_hitPoints = ctHitPoints;
+	this->_hitPoints = ftHitPoints;
+	this->_energyPoints = ftEnergyPoints;
+	this->_attackDamage = ftAttackDamage;
+}
+
+FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
+{
+	std::cout << "Default FragTrap constructor called!" << std::endl;
+	this->_hitPoints = ftHitPoints;
 	this->_energyPoints = ftEnergyPoints;
 	this->_attackDamage = ftAttackDamage;
 }
@@ -49,5 +57,5 @@ void FragTrap::highFivesGuys()
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap deconstructor called!" << std::endl;
+	std::cout << "FragTrap destructor called!" << std::endl;
 }

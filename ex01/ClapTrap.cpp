@@ -6,7 +6,7 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 15:33:58 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 17:42:16 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:41:08 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,20 @@ ClapTrap::ClapTrap(void) : _name(""), _hitPoints(ctHitPoints),
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(ctHitPoints),
+ClapTrap::ClapTrap(const std::string &name) : _name(name), _hitPoints(ctHitPoints),
 	_energyPoints(ctEnergyPoints), _attackDamage(ctAttackDamage)
+{
+	std::cout << "Default constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(int hitP, int energyP, int attackD) : _name(""), _hitPoints(hitP),
+	_energyPoints(energyP), _attackDamage(attackD)
+{
+	std::cout << "Default constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const std::string &name, int hitP, int energyP, int attackD) : _name(name), _hitPoints(hitP),
+	_energyPoints(energyP), _attackDamage(attackD)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -56,7 +68,7 @@ void ClapTrap::attack(const std::string &target)
 		this->_energyPoints--;
 	}
 	else if (this->_hitPoints <= 0)
-		std::cout << this->_name << " has died!" << std::endl;
+		std::cout << this->_name << " has no hitpoints left!" << std::endl;
 	else
 		std::cout << this->_name << " has ran out of energy!" << std::endl;
 }
@@ -69,7 +81,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		this->_hitPoints -= amount;
 	}
 	if (this->_hitPoints <= 0)
-		std::cout << this->_name << " has died!" << std::endl;
+		std::cout << this->_name << " has no hitpoints left!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -82,7 +94,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		this->_energyPoints--;
 	}
 	else if (this->_hitPoints <= 0)
-		std::cout << this->_name << " has died!" << std::endl;
+		std::cout << this->_name << " has no hitpoints left!" << std::endl;
 	else
 		std::cout << this->_name << " has ran out of energy!" << std::endl;
 }

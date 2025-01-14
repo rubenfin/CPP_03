@@ -6,27 +6,21 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/26 15:14:47 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 17:40:44 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:50:35 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(const std::string &name) : ClapTrap(name, ftHitPoints, ftEnergyPoints, ftAttackDamage)
 {
 	std::cout << "Default FragTrap constructor called!" << std::endl;
-	this->_hitPoints = ctHitPoints;
-	this->_energyPoints = ftEnergyPoints;
-	this->_attackDamage = ftAttackDamage;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
 	std::cout << "FragTrap copy constructor called!" << std::endl;
-	this->_name = other._name;
-	this->_energyPoints = other._energyPoints;
-	this->_attackDamage = other._attackDamage;
-	this->_hitPoints = other._hitPoints;
+	*this = other;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other)
@@ -44,7 +38,10 @@ FragTrap &FragTrap::operator=(const FragTrap &other)
 
 void FragTrap::highFivesGuys()
 {
-	std::cout << "Fragtrap " << this->_name << " has HighFived everyone!" << std::endl;
+	if (this->_hitPoints <= 0)
+		std::cout << "FragTrap " << this->_name << " can't HighFive, " << this->_name << " has no hitpoints left!" << std::endl;
+	else
+		std::cout << "FragTrap " << this->_name << " has HighFived everyone!" << std::endl;
 }
 
 FragTrap::~FragTrap()

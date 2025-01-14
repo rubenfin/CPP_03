@@ -6,7 +6,7 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/24 15:34:01 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 17:41:16 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:42:30 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class ClapTrap
 
   public:
 	ClapTrap(void);
-	ClapTrap(std::string name);
+	ClapTrap(const std::string &name);
+	ClapTrap(const std::string &name, int hitPoints, int energyPoints, int attackDamage);
 	ClapTrap(const ClapTrap &other);
 	ClapTrap &operator=(const ClapTrap &other);
 	~ClapTrap();

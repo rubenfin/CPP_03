@@ -6,7 +6,7 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/25 13:26:29 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 17:37:57 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:41:27 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class ScavTrap : public ClapTrap
 
   public:
 	ScavTrap(void);
-	ScavTrap(std::string _name);
+	ScavTrap(const std::string &name);
 	ScavTrap(const ScavTrap &other);
 	ScavTrap &operator=(const ScavTrap &other);
 	~ScavTrap();

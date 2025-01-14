@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -g -pedantic -std=c++11
+CFLAGS = -Wall -Wextra -Werror -Wno-shadow -g -pedantic -std=c++11
 SRCS = $(wildcard *.cpp) 
 OBJS = $(patsubst %.cpp,obj/%.o,$(SRCS))
 

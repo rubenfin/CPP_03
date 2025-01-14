@@ -6,13 +6,13 @@
 /*   By: rfinneru <rfinneru@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/25 13:26:42 by rfinneru      #+#    #+#                 */
-/*   Updated: 2024/05/10 17:36:37 by rfinneru      ########   odam.nl         */
+/*   Updated: 2024/05/30 11:41:16 by rfinneru      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap("")
+ScavTrap::ScavTrap(void) : ClapTrap(stHitPoints, stEnergyPoints, stAttackDamage)
 {
 	std::cout << "Default ScavTrap constructor called!" << std::endl;
 	_hitPoints = stHitPoints;
@@ -20,12 +20,10 @@ ScavTrap::ScavTrap(void) : ClapTrap("")
 	_attackDamage = stAttackDamage;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name, stHitPoints,
+	stEnergyPoints, stAttackDamage)
 {
 	std::cout << "Default ScavTrap constructor called!" << std::endl;
-	_hitPoints = stHitPoints;
-	_energyPoints = stEnergyPoints;
-	_attackDamage = stAttackDamage;
 }
 
 void ScavTrap::attack(const std::string &target)
@@ -43,10 +41,20 @@ void ScavTrap::attack(const std::string &target)
 
 void ScavTrap::guardGate(void)
 {
+	static bool	guard;
+
 	if (this->_hitPoints <= 0)
 		std::cout << this->_name << " can't activate Gate keeper mode, it looks like he's died!" << std::endl;
+	else if (guard)
+	{
+		std::cout << "ScavTrap " << this->_name << " has now turned off Gate keeper mode!" << std::endl;
+		guard = false;
+	}
 	else
+	{
 		std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode!" << std::endl;
+		guard = true;
+	}
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
